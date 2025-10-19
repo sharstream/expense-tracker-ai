@@ -13,9 +13,9 @@ import ExpenseList from '@/components/ExpenseList';
 import SummaryCards from '@/components/SummaryCards';
 import CategoryChart from '@/components/CategoryChart';
 import ExpenseFiltersComponent from '@/components/ExpenseFilters';
-import ExportButton from '@/components/ExportButton';
+import ExportModal from '@/components/ExportModal';
 import TaxReport from '@/components/TaxReport';
-import { Plus, X, Wallet, Receipt, FileText } from 'lucide-react';
+import { Plus, X, Wallet, Receipt, FileText, Download } from 'lucide-react';
 
 type TabView = 'expenses' | 'taxes';
 
@@ -27,6 +27,7 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showExportModal, setShowExportModal] = useState(false);
 
   // Load expenses from localStorage on mount
   useEffect(() => {
@@ -110,7 +111,13 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <ExportButton expenses={filteredExpenses} />
+              <button
+                onClick={() => setShowExportModal(true)}
+                className="group/export flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 focus:ring-purple-400 shadow-purple-200/50 hover:shadow-purple-300/50"
+              >
+                <Download size={18} className="transition-transform group-hover/export:translate-y-0.5" />
+                Export
+              </button>
               <button
                 onClick={() => {
                   setShowForm(!showForm);
@@ -236,6 +243,13 @@ export default function Home() {
           <TaxReport expenses={expenses} />
         )}
       </div>
+
+      {/* Export Modal */}
+      <ExportModal
+        expenses={expenses}
+        isOpen={showExportModal}
+        onClose={() => setShowExportModal(false)}
+      />
     </main>
   );
 }

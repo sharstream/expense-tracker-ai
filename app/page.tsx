@@ -15,9 +15,10 @@ import CategoryChart from '@/components/CategoryChart';
 import ExpenseFiltersComponent from '@/components/ExpenseFilters';
 import CloudExportHub from '@/components/CloudExportHub';
 import TaxReport from '@/components/TaxReport';
-import { Plus, X, Wallet, Receipt, FileText, Cloud } from 'lucide-react';
+import AnalyticsDashboard from '@/components/AnalyticsDashboard';
+import { Plus, X, Wallet, Receipt, FileText, BarChart2, Cloud } from 'lucide-react';
 
-type TabView = 'expenses' | 'taxes';
+type TabView = 'expenses' | 'taxes' | 'analytics';
 
 export default function Home() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -146,7 +147,7 @@ export default function Home() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-3 mb-8">
+        <div className="flex gap-3 mb-8 flex-wrap">
           <button
             onClick={() => setActiveTab('expenses')}
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
@@ -157,6 +158,17 @@ export default function Home() {
           >
             <Receipt size={20} />
             Expenses
+          </button>
+          <button
+            onClick={() => setActiveTab('analytics')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
+              activeTab === 'analytics'
+                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 scale-105'
+                : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-gray-700 hover:border-gray-300 hover:shadow-md'
+            }`}
+          >
+            <BarChart2 size={20} />
+            Analytics
           </button>
           <button
             onClick={() => setActiveTab('taxes')}
@@ -238,6 +250,9 @@ export default function Home() {
           </div>
             </div>
           </>
+        ) : activeTab === 'analytics' ? (
+          /* Analytics Tab */
+          <AnalyticsDashboard expenses={expenses} />
         ) : (
           /* Tax Report Tab */
           <TaxReport expenses={expenses} />

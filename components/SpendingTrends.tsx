@@ -18,11 +18,11 @@ export default function SpendingTrends({
 }: SpendingTrendsProps) {
   if (trends.length === 0) {
     return (
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg">
         <h3 className="text-lg font-bold text-gray-900 mb-4">{title}</h3>
         <div className="text-center py-12">
           <Calendar className="mx-auto text-gray-300 mb-3" size={48} />
-          <p className="text-gray-500">No spending data available for this period</p>
+          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">No spending data available for this period</p>
         </div>
       </div>
     );
@@ -47,10 +47,10 @@ export default function SpendingTrends({
       : 0;
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-bold text-gray-900">{title}</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{title}</h3>
         <div
           className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${
             trendDirection === 'up'
@@ -98,7 +98,7 @@ export default function SpendingTrends({
                         {formatCurrency(trend.amount)}
                       </div>
                       {showCount && (
-                        <div className="text-gray-400">
+                        <div className="text-gray-400 dark:text-gray-500">
                           {trend.count} expense{trend.count !== 1 ? 's' : ''}
                         </div>
                       )}
@@ -121,22 +121,22 @@ export default function SpendingTrends({
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
+      <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Average</div>
-          <div className="text-sm font-bold text-gray-900">
+          <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatCurrency(averageAmount)}
           </div>
         </div>
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Highest</div>
-          <div className="text-sm font-bold text-gray-900">
+          <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatCurrency(maxAmount)}
           </div>
         </div>
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Lowest</div>
-          <div className="text-sm font-bold text-gray-900">
+          <div className="text-sm font-bold text-gray-900 dark:text-gray-100">
             {formatCurrency(minAmount)}
           </div>
         </div>

@@ -44,7 +44,7 @@ export default function BudgetTracker({
   const isOverallOverBudget = totalSpent > totalBudget && totalBudget > 0;
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
@@ -52,8 +52,8 @@ export default function BudgetTracker({
             <Wallet className="text-white" size={20} />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-900">Monthly Budget</h3>
-            <p className="text-xs text-gray-500">Track your spending limits</p>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Monthly Budget</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Track your spending limits</p>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function BudgetTracker({
           }`}
         >
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-gray-700">
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
               Overall Budget
             </span>
             <span
@@ -117,7 +117,7 @@ export default function BudgetTracker({
           return (
             <div
               key={item.category}
-              className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200"
+              className="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors border border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
@@ -125,16 +125,16 @@ export default function BudgetTracker({
                     {CATEGORY_ICONS[item.category]}
                   </span>
                   <div>
-                    <div className="font-semibold text-gray-900">
+                    <div className="font-semibold text-gray-900 dark:text-gray-100">
                       {item.category}
                     </div>
                     {item.limit > 0 ? (
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
                         {formatCurrency(item.spent)} /{' '}
                         {formatCurrency(item.limit)}
                       </div>
                     ) : (
-                      <div className="text-xs text-gray-500">No budget set</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">No budget set</div>
                     )}
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export default function BudgetTracker({
                 ) : (
                   <button
                     onClick={() => handleEdit(item.category, item.limit)}
-                    className="p-2 rounded-lg hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-900"
+                    className="p-2 rounded-lg hover:bg-gray-200 transition-colors text-gray-600 hover:text-gray-900 dark:text-gray-100"
                     title="Edit budget"
                   >
                     <Edit2 size={16} />
@@ -195,7 +195,7 @@ export default function BudgetTracker({
 
                   {/* Status */}
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-600">
+                    <span className="text-gray-600 dark:text-gray-400 dark:text-gray-500">
                       {item.percentage.toFixed(1)}% used
                     </span>
                     {item.isOverBudget ? (

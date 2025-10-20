@@ -95,7 +95,7 @@ export default function ExpenseForm({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Date */}
         <div className="group/field">
-          <label htmlFor="date" className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
+          <label htmlFor="date" className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-2">
             Date
           </label>
           <input
@@ -104,13 +104,15 @@ export default function ExpenseForm({
             value={formData.date}
             onChange={(e) => handleChange('date', e.target.value)}
             className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 ${
-              errors.date ? 'border-red-400 bg-red-50' : 'border-gray-300 bg-white/50 hover:bg-white hover:border-gray-400'
+              errors.date
+                ? 'border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-900/20 dark:text-red-200'
+                : 'border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-gray-100'
             }`}
             max={new Date().toISOString().split('T')[0]}
           />
           {errors.date && (
-            <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-              <span className="inline-block w-1 h-1 rounded-full bg-red-600"></span>
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+              <span className="inline-block w-1 h-1 rounded-full bg-red-600 dark:bg-red-400"></span>
               {errors.date}
             </p>
           )}
@@ -118,7 +120,7 @@ export default function ExpenseForm({
 
         {/* Amount */}
         <div className="group/field">
-          <label htmlFor="amount" className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
+          <label htmlFor="amount" className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-2">
             Amount ($)
           </label>
           <input
@@ -130,12 +132,14 @@ export default function ExpenseForm({
             onChange={(e) => handleChange('amount', e.target.value)}
             placeholder="0.00"
             className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 text-lg font-semibold ${
-              errors.amount ? 'border-red-400 bg-red-50' : 'border-gray-300 bg-white/50 hover:bg-white hover:border-gray-400'
+              errors.amount
+                ? 'border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-900/20 dark:text-red-200'
+                : 'border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500'
             }`}
           />
           {errors.amount && (
-            <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-              <span className="inline-block w-1 h-1 rounded-full bg-red-600"></span>
+            <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+              <span className="inline-block w-1 h-1 rounded-full bg-red-600 dark:bg-red-400"></span>
               {errors.amount}
             </p>
           )}
@@ -144,14 +148,14 @@ export default function ExpenseForm({
 
       {/* Category */}
       <div className="group/field">
-        <label htmlFor="category" className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
+        <label htmlFor="category" className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-2">
           Category
         </label>
         <select
           id="category"
           value={formData.category}
           onChange={(e) => handleChange('category', e.target.value as ExpenseCategory)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 bg-white/50 hover:bg-white hover:border-gray-400 cursor-pointer font-medium"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 cursor-pointer font-medium text-gray-900 dark:text-gray-100"
         >
           {CATEGORIES.map((category) => (
             <option key={category} value={category}>
@@ -163,7 +167,7 @@ export default function ExpenseForm({
 
       {/* Description */}
       <div className="group/field">
-        <label htmlFor="description" className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
+        <label htmlFor="description" className="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-2">
           Description
         </label>
         <input
@@ -173,18 +177,20 @@ export default function ExpenseForm({
           onChange={(e) => handleChange('description', e.target.value)}
           placeholder="What did you spend on?"
           className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 ${
-            errors.description ? 'border-red-400 bg-red-50' : 'border-gray-300 bg-white/50 hover:bg-white hover:border-gray-400'
+            errors.description
+              ? 'border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-900/20 dark:text-red-200'
+              : 'border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500'
           }`}
           maxLength={200}
         />
         <div className="flex items-center justify-between mt-2">
           {errors.description ? (
-            <p className="text-sm text-red-600 flex items-center gap-1">
-              <span className="inline-block w-1 h-1 rounded-full bg-red-600"></span>
+            <p className="text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
+              <span className="inline-block w-1 h-1 rounded-full bg-red-600 dark:bg-red-400"></span>
               {errors.description}
             </p>
           ) : (
-            <span className="text-xs text-gray-500">{formData.description.length}/200</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{formData.description.length}/200</span>
           )}
         </div>
       </div>
@@ -194,7 +200,7 @@ export default function ExpenseForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group/btn flex-1 bg-gradient-to-br from-primary-500 to-primary-600 text-white py-3 px-6 rounded-xl hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold shadow-lg shadow-primary-200/50 hover:shadow-xl hover:shadow-primary-300/50 hover:scale-[1.02] disabled:hover:scale-100"
+          className="group/btn flex-1 bg-gradient-to-br from-primary-500 to-primary-600 text-white py-3 px-6 rounded-xl hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50 hover:shadow-xl hover:shadow-primary-300/50 dark:hover:shadow-primary-800/50 hover:scale-[1.02] disabled:hover:scale-100"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center gap-2">
@@ -209,7 +215,7 @@ export default function ExpenseForm({
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 py-3 border-2 border-gray-300 rounded-xl hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 transition-all duration-200 font-semibold text-gray-700 hover:scale-[1.02]"
+            className="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-all duration-200 font-semibold text-gray-700 dark:text-gray-300 hover:scale-[1.02]"
           >
             Cancel
           </button>

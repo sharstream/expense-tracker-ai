@@ -90,12 +90,12 @@ export default function TaxReport({ expenses }: TaxReportProps) {
 
   if (expenses.length === 0) {
     return (
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-12 text-center">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-12 text-center">
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 mb-4">
           <FileText size={40} className="text-primary-600" />
         </div>
         <h3 className="text-xl font-bold text-gray-900 mb-2">No Tax Data Yet</h3>
-        <p className="text-gray-600">Add expenses to generate your tax report</p>
+        <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Add expenses to generate your tax report</p>
       </div>
     );
   }
@@ -103,14 +103,14 @@ export default function TaxReport({ expenses }: TaxReportProps) {
   return (
     <div className="space-y-6">
       {/* Header with Year Selector */}
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-200/50">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50">
               <FileText size={28} className="text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-black text-gray-900">Tax Report</h2>
+              <h2 className="text-2xl font-black text-gray-900 dark:text-gray-100">Tax Report</h2>
               <p className="text-gray-600 font-medium">IRS Schedule C Ready</p>
             </div>
           </div>
@@ -161,14 +161,14 @@ export default function TaxReport({ expenses }: TaxReportProps) {
         {/* Total Expenses */}
         <div className="group relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500" />
-          <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-200/60 hover:scale-[1.02] hover:-translate-y-1">
+          <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-blue-200/60 hover:scale-[1.02] hover:-translate-y-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                 <DollarSign size={24} className="text-white" />
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Total Expenses</h3>
-                <p className="text-xs text-gray-500">{selectedYear}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{selectedYear}</p>
               </div>
             </div>
             <p className="text-4xl font-black bg-gradient-to-br from-blue-400 to-blue-600 bg-clip-text text-transparent">
@@ -180,14 +180,14 @@ export default function TaxReport({ expenses }: TaxReportProps) {
         {/* Total Deductible */}
         <div className="group relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500" />
-          <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-green-200/60 hover:scale-[1.02] hover:-translate-y-1">
+          <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-green-200/60 hover:scale-[1.02] hover:-translate-y-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                 <CheckCircle size={24} className="text-white" />
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Tax Deductible</h3>
-                <p className="text-xs text-gray-500">IRS Approved</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">IRS Approved</p>
               </div>
             </div>
             <p className="text-4xl font-black bg-gradient-to-br from-green-400 to-green-600 bg-clip-text text-transparent">
@@ -199,14 +199,14 @@ export default function TaxReport({ expenses }: TaxReportProps) {
         {/* Estimated Savings */}
         <div className="group relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500" />
-          <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-purple-200/60 hover:scale-[1.02] hover:-translate-y-1">
+          <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-purple-200/60 hover:scale-[1.02] hover:-translate-y-1">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                 <TrendingUp size={24} className="text-white" />
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Est. Tax Savings</h3>
-                <p className="text-xs text-gray-500">25% bracket</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">25% bracket</p>
               </div>
             </div>
             <p className="text-4xl font-black bg-gradient-to-br from-purple-400 to-purple-600 bg-clip-text text-transparent">
@@ -217,7 +217,7 @@ export default function TaxReport({ expenses }: TaxReportProps) {
       </div>
 
       {/* IRS Categories Breakdown */}
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50">
         <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
           <span>📋</span> IRS Schedule C Categories
         </h3>
@@ -245,7 +245,7 @@ export default function TaxReport({ expenses }: TaxReportProps) {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <h4 className="font-bold text-gray-900">{category}</h4>
+                          <h4 className="font-bold text-gray-900 dark:text-gray-100">{category}</h4>
                           <span className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">
                             {data.count} items
                           </span>
@@ -288,7 +288,7 @@ export default function TaxReport({ expenses }: TaxReportProps) {
       </div>
 
       {/* Quarterly Breakdown */}
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50">
         <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
           <Calendar size={20} />
           Quarterly Breakdown
@@ -303,7 +303,7 @@ export default function TaxReport({ expenses }: TaxReportProps) {
             return (
               <div
                 key={quarter.quarter}
-                className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-gray-300"
+                className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 dark:border-gray-600"
                 style={{
                   animation: `slideIn 0.3s ease-out ${index * 0.1}s both`
                 }}
@@ -317,8 +317,8 @@ export default function TaxReport({ expenses }: TaxReportProps) {
                       {quarter.quarter}
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-gray-900">{quarter.months}</p>
-                      <p className="text-sm text-gray-600">
+                      <p className="font-bold text-gray-900 dark:text-gray-100">{quarter.months}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
                         {formatCurrency(quarter.total)} total • {formatCurrency(quarter.deductible)} deductible
                       </p>
                     </div>
@@ -327,7 +327,7 @@ export default function TaxReport({ expenses }: TaxReportProps) {
                 </button>
 
                 {isExpanded && (
-                  <div className="p-4 bg-white border-t border-gray-200">
+                  <div className="p-4 bg-white border-t border-gray-200 dark:border-gray-700">
                     <div className="space-y-2">
                       {Object.entries(quarter.byCategory)
                         .filter(([_, amount]) => amount > 0)
@@ -338,9 +338,9 @@ export default function TaxReport({ expenses }: TaxReportProps) {
                             <div key={category} className="flex items-center justify-between py-2">
                               <div className="flex items-center gap-2">
                                 <span className="text-lg">{TAX_CATEGORY_ICONS[taxCategory]}</span>
-                                <span className="text-sm font-medium text-gray-700">{category}</span>
+                                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{category}</span>
                               </div>
-                              <span className="font-semibold text-gray-900">{formatCurrency(amount)}</span>
+                              <span className="font-semibold text-gray-900 dark:text-gray-100">{formatCurrency(amount)}</span>
                             </div>
                           );
                         })}

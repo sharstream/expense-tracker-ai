@@ -16,11 +16,11 @@ interface InsightsPanelProps {
 export default function InsightsPanel({ insights }: InsightsPanelProps) {
   if (insights.length === 0) {
     return (
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg">
         <h3 className="text-lg font-bold text-gray-900 mb-4">Spending Insights</h3>
         <div className="text-center py-8">
           <Lightbulb className="mx-auto text-gray-300 mb-3" size={48} />
-          <p className="text-gray-500">No insights available yet</p>
+          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500">No insights available yet</p>
           <p className="text-sm text-gray-400 mt-1">
             Add more expenses to get personalized insights
           </p>
@@ -82,7 +82,7 @@ export default function InsightsPanel({ insights }: InsightsPanelProps) {
   });
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
@@ -90,8 +90,8 @@ export default function InsightsPanel({ insights }: InsightsPanelProps) {
             <TrendingUp className="text-white" size={20} />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-gray-900">Spending Insights</h3>
-            <p className="text-xs text-gray-500">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Spending Insights</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
               {insights.length} insight{insights.length !== 1 ? 's' : ''} found
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function InsightsPanel({ insights }: InsightsPanelProps) {
                   </p>
                   {insight.category && (
                     <div className="mt-2">
-                      <span className="inline-block px-2 py-1 bg-white/50 rounded-lg text-xs font-medium text-gray-600">
+                      <span className="inline-block px-2 py-1 bg-white/50 rounded-lg text-xs font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">
                         {insight.category}
                       </span>
                     </div>

@@ -35,13 +35,13 @@ export default function ExpenseList({ expenses, onEdit, onDelete }: ExpenseListP
   if (expenses.length === 0) {
     return (
       <div className="text-center py-20">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 mb-4">
-          <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 mb-4">
+          <svg className="w-10 h-10 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
         </div>
-        <p className="text-gray-900 text-xl font-semibold">No expenses yet</p>
-        <p className="text-gray-500 text-sm mt-2 max-w-xs mx-auto">Start tracking your spending by adding your first expense above</p>
+        <p className="text-gray-900 dark:text-gray-100 text-xl font-semibold">No expenses yet</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 max-w-xs mx-auto">Start tracking your spending by adding your first expense above</p>
       </div>
     );
   }
@@ -76,7 +76,7 @@ export default function ExpenseList({ expenses, onEdit, onDelete }: ExpenseListP
           />
 
           {/* Main card */}
-          <div className={`relative bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/60 hover:scale-[1.01] hover:border-gray-300/50 hover:-translate-y-0.5`}>
+          <div className={`relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-5 transition-all duration-300 hover:shadow-xl hover:shadow-gray-200/60 dark:hover:shadow-gray-900/60 hover:scale-[1.01] hover:border-gray-300/50 dark:hover:border-gray-600/50 hover:-translate-y-0.5`}>
             <div className="flex items-start gap-4">
               {/* Category Icon with Gradient */}
               <div className="relative flex-shrink-0">
@@ -92,21 +92,21 @@ export default function ExpenseList({ expenses, onEdit, onDelete }: ExpenseListP
               {/* Content */}
               <div className="flex-1 min-w-0">
                 {/* Description */}
-                <h3 className="text-lg font-bold text-gray-900 mb-1.5 group-hover:text-gray-950 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1.5 group-hover:text-gray-950 dark:group-hover:text-gray-50 transition-colors">
                   {expense.description}
                 </h3>
 
                 {/* Meta Information */}
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   {/* Category Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium group-hover:bg-gray-200 transition-colors">
-                    <Tag size={14} className="text-gray-500" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors">
+                    <Tag size={14} className="text-gray-500 dark:text-gray-400" />
                     <span>{expense.category}</span>
                   </div>
 
                   {/* Date Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-medium group-hover:bg-gray-200 transition-colors">
-                    <Calendar size={14} className="text-gray-500" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition-colors">
+                    <Calendar size={14} className="text-gray-500 dark:text-gray-400" />
                     <span>{getDateLabel(expense.date)}</span>
                   </div>
                 </div>
@@ -123,14 +123,14 @@ export default function ExpenseList({ expenses, onEdit, onDelete }: ExpenseListP
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => onEdit(expense)}
-                    className="group/btn p-2.5 text-gray-600 hover:text-primary-600 bg-gray-100/80 hover:bg-primary-50 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md hover:shadow-primary-200/50"
+                    className="group/btn p-2.5 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 bg-gray-100/80 dark:bg-gray-700/80 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md hover:shadow-primary-200/50 dark:hover:shadow-primary-900/50"
                     title="Edit expense"
                   >
                     <Pencil size={18} className="transition-transform group-hover/btn:rotate-12" />
                   </button>
                   <button
                     onClick={() => handleDelete(expense.id, expense.description)}
-                    className="group/btn p-2.5 text-gray-600 hover:text-red-600 bg-gray-100/80 hover:bg-red-50 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md hover:shadow-red-200/50"
+                    className="group/btn p-2.5 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 bg-gray-100/80 dark:bg-gray-700/80 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md hover:shadow-red-200/50 dark:hover:shadow-red-900/50"
                     title="Delete expense"
                   >
                     <Trash2 size={18} className="transition-transform group-hover/btn:scale-110" />

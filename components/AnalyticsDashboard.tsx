@@ -83,7 +83,7 @@ export default function AnalyticsDashboard({ expenses }: AnalyticsDashboardProps
   return (
     <div className="space-y-6">
       {/* Period Selector */}
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-4 shadow-lg">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-4 shadow-lg">
         <div className="flex flex-wrap gap-2">
           {PERIODS.map((period) => (
             <button
@@ -91,7 +91,7 @@ export default function AnalyticsDashboard({ expenses }: AnalyticsDashboardProps
               onClick={() => setSelectedPeriod(period)}
               className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-200 ${
                 selectedPeriod.value === period.value
-                  ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 scale-105'
+                  ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50 scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
               }`}
             >
@@ -186,14 +186,14 @@ export default function AnalyticsDashboard({ expenses }: AnalyticsDashboardProps
           <SpendingTrends trends={trends} title="Spending Over Time" />
 
           {summary.topExpenses.length > 0 && (
-            <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-md">
                   <PieChart className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">Top Expenses</h3>
-                  <p className="text-xs text-gray-500">Largest transactions</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Top Expenses</h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Largest transactions</p>
                 </div>
               </div>
               <div className="space-y-3">
@@ -210,16 +210,16 @@ export default function AnalyticsDashboard({ expenses }: AnalyticsDashboardProps
                         <div className="font-semibold text-gray-900 truncate">
                           {expense.description}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
                           {expense.category} • {expense.date}
                         </div>
                       </div>
                     </div>
                     <div className="text-right ml-4">
-                      <div className="font-bold text-gray-900">
+                      <div className="font-bold text-gray-900 dark:text-gray-100">
                         {formatCurrency(expense.amount)}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
                         {expense.percentageOfTotal.toFixed(1)}%
                       </div>
                     </div>

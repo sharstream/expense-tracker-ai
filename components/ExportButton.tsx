@@ -39,10 +39,10 @@ export default function ExportButton({ expenses }: ExportButtonProps) {
     <button
       onClick={handleExport}
       disabled={isExporting || expenses.length === 0}
-      className={`group/btn flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 disabled:hover:scale-100 ${
+      className={`group/btn flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 disabled:hover:scale-100 ${
         exported
-          ? 'bg-gradient-to-br from-green-400 to-green-600 text-white focus:ring-green-400 shadow-green-200/50'
-          : 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 focus:ring-emerald-400 shadow-emerald-200/50 hover:shadow-emerald-300/50'
+          ? 'bg-gradient-to-br from-green-400 to-green-600 text-white focus:ring-green-400 shadow-green-200/50 dark:shadow-green-900/50'
+          : 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 focus:ring-emerald-400 shadow-emerald-200/50 hover:shadow-emerald-300/50 dark:shadow-emerald-900/50 dark:hover:shadow-emerald-800/50'
       }`}
       title="Export to CSV"
     >

@@ -263,8 +263,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
               {/* Template Selection */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <FileText className="w-5 h-5 text-gray-700" />
-                  <h3 className="text-lg font-bold text-gray-900">Choose Export Template</h3>
+                  <FileText className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Choose Export Template</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {EXPORT_TEMPLATES.map((template) => (
@@ -274,7 +274,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       className={`relative p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                         selectedTemplate === template.id
                           ? 'border-purple-500 bg-purple-50 shadow-lg scale-105'
-                          : 'border-gray-200 hover:border-gray-300 hover:shadow-md bg-white'
+                          : 'border-gray-200 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md bg-white'
                       }`}
                     >
                       <div
@@ -283,7 +283,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                         {template.icon}
                       </div>
                       <h4 className="font-bold text-gray-900 mb-1">{template.name}</h4>
-                      <p className="text-sm text-gray-600">{template.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{template.description}</p>
 
                       {selectedTemplate === template.id && (
                         <div className="absolute top-3 right-3">
@@ -304,8 +304,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Email Export</h4>
-                      <p className="text-sm text-gray-600">Send directly to recipients</p>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100">Email Export</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Send directly to recipients</p>
                     </div>
                   </div>
 
@@ -368,8 +368,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Schedule Export</h4>
-                      <p className="text-sm text-gray-600">Automatic recurring exports</p>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100">Schedule Export</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Automatic recurring exports</p>
                     </div>
                   </div>
 
@@ -422,8 +422,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
               {/* Cloud Services */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <Cloud className="w-5 h-5 text-gray-700" />
-                  <h3 className="text-lg font-bold text-gray-900">Cloud Services</h3>
+                  <Cloud className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Cloud Services</h3>
                   <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">
                     {CLOUD_SERVICES.filter((s) => s.connected).length} Connected
                   </span>
@@ -438,7 +438,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                         selectedProvider === service.id
                           ? 'border-purple-500 bg-purple-50 shadow-lg scale-105'
                           : service.connected || service.id === 'email'
-                          ? 'border-gray-200 hover:border-gray-300 hover:shadow-md bg-white'
+                          ? 'border-gray-200 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md bg-white'
                           : 'border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed'
                       }`}
                     >
@@ -456,7 +456,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       <p className="text-xs text-gray-600 mb-2">{service.description}</p>
 
                       {!service.connected && service.id !== 'email' && (
-                        <div className="mt-3 text-xs text-gray-500">Click to connect</div>
+                        <div className="mt-3 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Click to connect</div>
                       )}
                     </button>
                   ))}
@@ -469,7 +469,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-bold text-gray-900 mb-1">Ready to Export</h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
                         {expenses.length} expenses with {selectedTemplateConfig?.name} template
                       </p>
                     </div>
@@ -505,7 +505,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Scheduled Exports</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Scheduled Exports</h3>
                   <p className="text-sm text-gray-600 mt-1">Automatic recurring exports</p>
                 </div>
                 <button
@@ -521,7 +521,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                 <div className="text-center py-12">
                   <Clock className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h4 className="text-lg font-bold text-gray-900 mb-2">No scheduled exports</h4>
-                  <p className="text-gray-600">Create your first automated export schedule</p>
+                  <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Create your first automated export schedule</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -537,7 +537,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-2">
-                              <h4 className="font-bold text-gray-900">{schedule.name}</h4>
+                              <h4 className="font-bold text-gray-900 dark:text-gray-100">{schedule.name}</h4>
                               <span
                                 className={`px-3 py-1 rounded-full text-xs font-bold ${
                                   schedule.enabled
@@ -548,7 +548,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                                 {schedule.enabled ? 'Active' : 'Paused'}
                               </span>
                             </div>
-                            <div className="space-y-1 text-sm text-gray-600">
+                            <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
                               <div className="flex items-center gap-2">
                                 <FileText className="w-4 h-4" />
                                 <span>Template: {template?.name}</span>
@@ -588,7 +588,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
           {activeTab === 'history' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900">Export History</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Export History</h3>
                 <p className="text-sm text-gray-600 mt-1">Recent exports and their status</p>
               </div>
 
@@ -596,7 +596,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                 <div className="text-center py-12">
                   <History className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h4 className="text-lg font-bold text-gray-900 mb-2">No export history</h4>
-                  <p className="text-gray-600">Your exports will appear here</p>
+                  <p className="text-gray-600 dark:text-gray-400 dark:text-gray-500">Your exports will appear here</p>
                 </div>
               ) : (
                 <div className="space-y-3">
@@ -622,8 +622,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                               <span className="text-2xl">{template?.icon || '📄'}</span>
                             </div>
                             <div>
-                              <h4 className="font-bold text-gray-900">{template?.name}</h4>
-                              <div className="flex items-center gap-3 mt-1 text-sm text-gray-600">
+                              <h4 className="font-bold text-gray-900 dark:text-gray-100">{template?.name}</h4>
+                              <div className="flex items-center gap-3 mt-1 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
                                 <span className="flex items-center gap-1">
                                   {service?.icon || '📧'}
                                   {item.destination === 'email'
@@ -679,7 +679,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
           {activeTab === 'share' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900">Share Your Data</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Share Your Data</h3>
                 <p className="text-sm text-gray-600 mt-1">
                   Generate secure links to share your expense data
                 </p>
@@ -693,8 +693,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       <LinkIcon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Shareable Link</h4>
-                      <p className="text-sm text-gray-600">Create a secure access link</p>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100">Shareable Link</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Create a secure access link</p>
                     </div>
                   </div>
 
@@ -729,15 +729,15 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 text-sm">
-                        <div className="bg-white rounded-xl p-3 border border-gray-200">
+                        <div className="bg-white rounded-xl p-3 border border-gray-200 dark:border-gray-700">
                           <div className="text-gray-600 mb-1">Expires</div>
-                          <div className="font-bold text-gray-900">
+                          <div className="font-bold text-gray-900 dark:text-gray-100">
                             {formatDate(shareLink.expiresAt, 'MMM d, yyyy')}
                           </div>
                         </div>
-                        <div className="bg-white rounded-xl p-3 border border-gray-200">
+                        <div className="bg-white rounded-xl p-3 border border-gray-200 dark:border-gray-700">
                           <div className="text-gray-600 mb-1">Access Count</div>
-                          <div className="font-bold text-gray-900">
+                          <div className="font-bold text-gray-900 dark:text-gray-100">
                             {shareLink.accessCount} / {shareLink.maxAccess}
                           </div>
                         </div>
@@ -760,8 +760,8 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       <Users className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">QR Code</h4>
-                      <p className="text-sm text-gray-600">Quick mobile access</p>
+                      <h4 className="font-bold text-gray-900 dark:text-gray-100">QR Code</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">Quick mobile access</p>
                     </div>
                   </div>
 
@@ -775,7 +775,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
                       </p>
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center justify-center h-[280px] text-gray-400">
+                    <div className="flex flex-col items-center justify-center h-[280px] text-gray-400 dark:text-gray-500">
                       <div className="w-32 h-32 border-4 border-dashed border-gray-300 rounded-2xl flex items-center justify-center mb-4">
                         <span className="text-4xl">📱</span>
                       </div>
@@ -788,7 +788,7 @@ export default function CloudExportHub({ expenses, isOpen, onClose }: CloudExpor
               </div>
 
               {/* Share Statistics */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-200">
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
                 <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-blue-600" />
                   Share Analytics

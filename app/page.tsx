@@ -17,6 +17,7 @@ import CloudExportHub from '@/components/CloudExportHub';
 import TaxReport from '@/components/TaxReport';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import { Plus, X, Wallet, Receipt, FileText, BarChart2, Cloud } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 type TabView = 'expenses' | 'taxes' | 'analytics';
 
@@ -78,40 +79,41 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="text-center">
           <div className="relative inline-block">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 border-t-primary-600"></div>
-            <div className="absolute inset-0 rounded-full bg-primary-100/20 blur-xl animate-pulse"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary-200 dark:border-primary-800 border-t-primary-600 dark:border-t-primary-400"></div>
+            <div className="absolute inset-0 rounded-full bg-primary-100/20 dark:bg-primary-900/20 blur-xl animate-pulse"></div>
           </div>
-          <p className="mt-6 text-lg font-semibold text-gray-700">Loading your expenses...</p>
-          <p className="text-sm text-gray-500 mt-1">Just a moment</p>
+          <p className="mt-6 text-lg font-semibold text-gray-700 dark:text-gray-200">Loading your expenses...</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Just a moment</p>
         </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <main className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="relative">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-200/50">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50">
                   <Wallet className="text-white" size={32} />
                 </div>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600 blur-xl opacity-20 animate-pulse"></div>
               </div>
               <div>
-                <h1 className="text-4xl font-black bg-gradient-to-br from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <h1 className="text-4xl font-black bg-gradient-to-br from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
                   Expense Tracker
                 </h1>
-                <p className="text-gray-600 font-medium mt-1">Manage your finances with elegance</p>
+                <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">Manage your finances with elegance</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <ThemeToggle />
               <button
                 onClick={() => setShowCloudHub(true)}
                 className="group/cloud flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white hover:shadow-purple-300/50 focus:ring-purple-400"
@@ -124,10 +126,10 @@ export default function Home() {
                   setShowForm(!showForm);
                   setEditingExpense(null);
                 }}
-                className={`group/btn flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 ${
+                className={`group/btn flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 ${
                   showForm
-                    ? 'bg-gradient-to-br from-gray-500 to-gray-600 text-white hover:from-gray-600 hover:to-gray-700 focus:ring-gray-400 shadow-gray-200/50'
-                    : 'bg-gradient-to-br from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 focus:ring-primary-400 shadow-primary-200/50 hover:shadow-primary-300/50'
+                    ? 'bg-gradient-to-br from-gray-500 to-gray-600 text-white hover:from-gray-600 hover:to-gray-700 focus:ring-gray-400 shadow-gray-200/50 dark:shadow-gray-800/50'
+                    : 'bg-gradient-to-br from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 focus:ring-primary-400 shadow-primary-200/50 hover:shadow-primary-300/50 dark:shadow-primary-900/50 dark:hover:shadow-primary-800/50'
                 }`}
               >
                 {showForm ? (
@@ -152,8 +154,8 @@ export default function Home() {
             onClick={() => setActiveTab('expenses')}
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
               activeTab === 'expenses'
-                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 scale-105'
-                : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-gray-700 hover:border-gray-300 hover:shadow-md'
+                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50 scale-105'
+                : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md'
             }`}
           >
             <Receipt size={20} />
@@ -163,8 +165,8 @@ export default function Home() {
             onClick={() => setActiveTab('analytics')}
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
               activeTab === 'analytics'
-                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 scale-105'
-                : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-gray-700 hover:border-gray-300 hover:shadow-md'
+                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50 scale-105'
+                : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md'
             }`}
           >
             <BarChart2 size={20} />
@@ -174,8 +176,8 @@ export default function Home() {
             onClick={() => setActiveTab('taxes')}
             className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
               activeTab === 'taxes'
-                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 scale-105'
-                : 'bg-white/80 backdrop-blur-sm border border-gray-200/50 text-gray-700 hover:border-gray-300 hover:shadow-md'
+                ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-200/50 dark:shadow-primary-900/50 scale-105'
+                : 'bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md'
             }`}
           >
             <FileText size={20} />
@@ -190,16 +192,16 @@ export default function Home() {
 
             {/* Add/Edit Expense Form */}
             {(showForm || editingExpense) && (
-              <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 mb-8 shadow-lg shadow-gray-200/50 transition-all duration-300">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 mb-8 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50 transition-all duration-300">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50 dark:shadow-primary-900/50">
                     {editingExpense ? (
                       <span className="text-white text-xl">✎</span>
                     ) : (
                       <Plus size={20} className="text-white" />
                     )}
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                     {editingExpense ? 'Edit Expense' : 'Add New Expense'}
                   </h2>
                 </div>
@@ -223,14 +225,14 @@ export default function Home() {
             />
 
             {/* Expense List */}
-            <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/50">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 hover:border-gray-300/50 dark:hover:border-gray-600/50">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
                     Expenses
                   </h2>
                   {filteredExpenses.length > 0 && (
-                    <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-bold">
+                    <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-bold">
                       {filteredExpenses.length} {filteredExpenses.length === 1 ? 'item' : 'items'}
                     </span>
                   )}

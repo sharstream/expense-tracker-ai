@@ -27,30 +27,30 @@ export default function CategoryChart({ categoryBreakdown }: CategoryChartProps)
 
   if (sortedCategories.length === 0) {
     return (
-      <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/50">
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 hover:border-gray-300/50 dark:hover:border-gray-600/50">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50 dark:shadow-primary-900/50">
             <PieChart size={20} className="text-white" />
           </div>
-          <h3 className="text-lg font-bold text-gray-900">Spending by Category</h3>
+          <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Spending by Category</h3>
         </div>
         <div className="text-center py-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 mb-3">
-            <PieChart size={28} className="text-gray-400" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 mb-3">
+            <PieChart size={28} className="text-gray-400 dark:text-gray-500" />
           </div>
-          <p className="text-gray-500 font-medium">No expenses to display</p>
+          <p className="text-gray-500 dark:text-gray-400 font-medium">No expenses to display</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm border border-gray-200/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/50">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 dark:hover:shadow-gray-900/50 hover:border-gray-300/50 dark:hover:border-gray-600/50">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-md shadow-primary-200/50 dark:shadow-primary-900/50">
           <PieChart size={20} className="text-white" />
         </div>
-        <h3 className="text-lg font-bold text-gray-900">Spending by Category</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Spending by Category</h3>
       </div>
 
       <div className="space-y-5">
@@ -69,18 +69,18 @@ export default function CategoryChart({ categoryBreakdown }: CategoryChartProps)
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${CATEGORY_GRADIENTS[category]} flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform duration-300`}>
                     {CATEGORY_ICONS[category]}
                   </div>
-                  <span className="font-bold text-gray-900 group-hover:text-gray-950 transition-colors">{category}</span>
+                  <span className="font-bold text-gray-900 dark:text-gray-100 group-hover:text-gray-950 dark:group-hover:text-gray-50 transition-colors">{category}</span>
                 </div>
                 <div className="text-right">
                   <div className={`text-lg font-black bg-gradient-to-br ${CATEGORY_GRADIENTS[category]} bg-clip-text text-transparent`}>
                     {formatCurrency(amount)}
                   </div>
-                  <span className="text-xs text-gray-500 font-semibold">{percentage.toFixed(1)}%</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 font-semibold">{percentage.toFixed(1)}%</span>
                 </div>
               </div>
 
               {/* Progress bar */}
-              <div className="relative w-full h-3 bg-gray-100 rounded-full overflow-hidden group-hover:h-4 transition-all duration-300">
+              <div className="relative w-full h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden group-hover:h-4 transition-all duration-300">
                 <div
                   className={`h-full bg-gradient-to-r ${CATEGORY_GRADIENTS[category]} rounded-full transition-all duration-700 ease-out shadow-sm`}
                   style={{ width: `${percentage}%` }}
@@ -95,9 +95,9 @@ export default function CategoryChart({ categoryBreakdown }: CategoryChartProps)
       </div>
 
       {/* Total summary */}
-      <div className="mt-6 pt-5 border-t border-gray-200/50">
+      <div className="mt-6 pt-5 border-t border-gray-200/50 dark:border-gray-700/50">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-gray-600 uppercase tracking-wide">Total</span>
+          <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">Total</span>
           <span className="text-2xl font-black bg-gradient-to-br from-primary-500 to-primary-600 bg-clip-text text-transparent">
             {formatCurrency(total)}
           </span>

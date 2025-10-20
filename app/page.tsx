@@ -13,10 +13,10 @@ import ExpenseList from '@/components/ExpenseList';
 import SummaryCards from '@/components/SummaryCards';
 import CategoryChart from '@/components/CategoryChart';
 import ExpenseFiltersComponent from '@/components/ExpenseFilters';
-import ExportButton from '@/components/ExportButton';
+import CloudExportHub from '@/components/CloudExportHub';
 import TaxReport from '@/components/TaxReport';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
-import { Plus, X, Wallet, Receipt, FileText, BarChart2 } from 'lucide-react';
+import { Plus, X, Wallet, Receipt, FileText, BarChart2, Cloud } from 'lucide-react';
 
 type TabView = 'expenses' | 'taxes' | 'analytics';
 
@@ -28,6 +28,7 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [editingExpense, setEditingExpense] = useState<Expense | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showCloudHub, setShowCloudHub] = useState(false);
 
   // Load expenses from localStorage on mount
   useEffect(() => {
@@ -111,7 +112,13 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <ExportButton expenses={filteredExpenses} />
+              <button
+                onClick={() => setShowCloudHub(true)}
+                className="group/cloud flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-white hover:shadow-purple-300/50 focus:ring-purple-400"
+              >
+                <Cloud size={18} className="transition-transform group-hover/cloud:scale-110" />
+                Cloud Export
+              </button>
               <button
                 onClick={() => {
                   setShowForm(!showForm);
@@ -251,6 +258,13 @@ export default function Home() {
           <TaxReport expenses={expenses} />
         )}
       </div>
+
+      {/* Cloud Export Hub */}
+      <CloudExportHub
+        expenses={expenses}
+        isOpen={showCloudHub}
+        onClose={() => setShowCloudHub(false)}
+      />
     </main>
   );
 }
